@@ -29,14 +29,15 @@ import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 // mock
-import USERLIST from '../_mock/user';
+import USERLIST from '../_mock/revenue';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
+  { id: 'category', label: 'Category', alignRight: false },
+  { id: 'cost', label: 'Cost (Rs)', alignRight: false },
+  { id: 'revenue', label: 'Revenue (Rs)', alignRight: false },
   { id: 'isVerified', label: 'Verified', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
   { id: '' },
 ];
 
@@ -71,7 +72,7 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function UserPage() {
+export default function Revenue() {
   const [open, setOpen] = useState(null);
 
   const [page, setPage] = useState(0);
@@ -147,13 +148,13 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> Admin | Customer </title>
+        <title> Admin | Revenue </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Customer
+            Revenue
           </Typography>
         </Stack>
 
@@ -174,7 +175,7 @@ export default function UserPage() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                    const { id, name, category, cost, revenue, isVerified } = row;
                     const selectedUser = selected.indexOf(name) !== -1;
 
                     return (
@@ -185,24 +186,27 @@ export default function UserPage() {
 
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={name} src={avatarUrl} />
                             <Typography variant="subtitle2" noWrap>
-                              {name}
+                              {category}
                             </Typography>
                           </Stack>
                         </TableCell>
 
+                        <TableCell align="left">{cost}</TableCell>
+
+                        <TableCell align="left">{revenue}</TableCell>
+
                         <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
 
-                        <TableCell align="left">
+                        {/* <TableCell align="left">
                           <Label color={(status === 'banned' && 'error') || 'success'}>{sentenceCase(status)}</Label>
-                        </TableCell>
+                        </TableCell> */}
 
-                        <TableCell align="right">
+                        {/* <TableCell align="right">
                           <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
                             <Iconify icon={'eva:more-vertical-fill'} />
                           </IconButton>
-                        </TableCell>
+                        </TableCell> */}
                       </TableRow>
                     );
                   })}

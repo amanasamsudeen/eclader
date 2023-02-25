@@ -18,27 +18,27 @@ const navConfig = [
   },
   {
     title: 'collectors',
-    path: '/404',
+    path: '/dashboard/collectors',
     icon: icon('ic_user'),
   },
   {
     title: 'technicians',
-    path: '/404',
+    path: '/dashboard/technicians',
     icon: icon('ic_user'),
   },
   {
     title: 'e-waste',
-    path: '/404',
+    path: '/dashboard/ewaste',
     icon: icon('ic_user'),
   },
   {
     title: 'revenue',
-    path: '/404',
+    path: '/dashboard/revenue',
     icon: icon('ic_user'),
   },
   {
     title: 'shop',
-    path: '/dashboard/products',
+    path: '/dashboard/shop',
     icon: icon('ic_cart'),
   },
   // {

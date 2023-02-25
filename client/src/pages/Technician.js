@@ -29,12 +29,13 @@ import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 // mock
-import USERLIST from '../_mock/user';
+import USERLIST from '../_mock/technician';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
+  { id: 'role', label: 'Role', alignRight: false },
   { id: 'isVerified', label: 'Verified', alignRight: false },
   { id: 'status', label: 'Status', alignRight: false },
   { id: '' },
@@ -71,7 +72,7 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function UserPage() {
+export default function Technician() {
   const [open, setOpen] = useState(null);
 
   const [page, setPage] = useState(0);
@@ -147,14 +148,17 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> Admin | Customer </title>
+        <title> Admin | Technician </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Customer
+            Technician
           </Typography>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+            New Technician
+          </Button>
         </Stack>
 
         <Card>
@@ -191,6 +195,8 @@ export default function UserPage() {
                             </Typography>
                           </Stack>
                         </TableCell>
+
+                        <TableCell align="left">{role}</TableCell>
 
                         <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
 

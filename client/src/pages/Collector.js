@@ -29,12 +29,14 @@ import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 // mock
-import USERLIST from '../_mock/user';
+import USERLIST from '../_mock/collector';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
+  { id: 'company', label: 'Company', alignRight: false },
+  { id: 'purchases', label: 'Purchases (kg)', alignRight: false },
   { id: 'isVerified', label: 'Verified', alignRight: false },
   { id: 'status', label: 'Status', alignRight: false },
   { id: '' },
@@ -71,7 +73,7 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function UserPage() {
+export default function Collector() {
   const [open, setOpen] = useState(null);
 
   const [page, setPage] = useState(0);
@@ -147,14 +149,17 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> Admin | Customer </title>
+        <title> Admin | Collector </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Customer
+            Collector
           </Typography>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+            New Collector
+          </Button>
         </Stack>
 
         <Card>
@@ -174,7 +179,7 @@ export default function UserPage() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                    const { id, name, purchases, status, company, avatarUrl, isVerified } = row;
                     const selectedUser = selected.indexOf(name) !== -1;
 
                     return (
@@ -191,6 +196,10 @@ export default function UserPage() {
                             </Typography>
                           </Stack>
                         </TableCell>
+
+                        <TableCell align="left">{company}</TableCell>
+
+                        <TableCell align="left">{purchases}</TableCell>
 
                         <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
 
