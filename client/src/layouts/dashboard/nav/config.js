@@ -19,43 +19,33 @@ const navConfig = [
   {
     title: 'collectors',
     path: '/dashboard/collectors',
-    icon: icon('ic_user'),
+    icon: icon('sync-outlined'),
   },
   {
     title: 'technicians',
     path: '/dashboard/technicians',
-    icon: icon('ic_user'),
+    icon: icon('tool-filled'),
   },
   {
     title: 'e-waste',
     path: '/dashboard/ewaste',
-    icon: icon('ic_user'),
+    icon: icon('ewaste'),
   },
   {
     title: 'revenue',
     path: '/dashboard/revenue',
-    icon: icon('ic_user'),
+    icon: icon('dollar-circle-filled'),
   },
   {
     title: 'shop',
     path: '/dashboard/shop',
     icon: icon('ic_cart'),
   },
-  // {
-  //   title: 'blog',
-  //   path: '/dashboard/blog',
-  //   icon: icon('ic_blog'),
-  // },
   {
     title: 'logout',
     path: '/login',
     icon: icon('ic_lock'),
   },
-  // {
-  //   title: 'Not found',
-  //   path: '/404',
-  //   icon: icon('ic_disabled'),
-  // },
 ];
 
 export default navConfig;
